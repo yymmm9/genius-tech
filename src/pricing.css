@@ -42,9 +42,8 @@ main{
 }
 
 @media only screen and (min-width: 1020px){
-  #table{
 
-  }
+
 }
 
 .device{
@@ -134,7 +133,7 @@ main{
 }
 
 .services::-webkit-scrollbar {
-        display: none;
+  display: none;
 }
 
 .service{
@@ -154,8 +153,8 @@ main{
 
 .service--img{
   display: flex;
-	width: 109px;
-	height: 138px;
+	width: 90px;
+	height: 110px;
 	background: var(--bg);
 	box-shadow: 4px 2px 7px rgba(136, 165, 191, 0.54), -4px -4px 7px #FFFFFF;
 	border-radius: 16px;
@@ -164,6 +163,7 @@ main{
 .service--img svg{
   margin: auto;
   display: block;
+  width: 70%;
 }
 
 .service--img.placeholder{
@@ -182,7 +182,7 @@ main{
 }
 
 .service--title{
-	font-size: 16px;
+	font-size: 14px;
 	max-width: 107px;
 	color: var(--i);
 }
@@ -199,8 +199,6 @@ main{
 .service--price.placeholder{
 	width: 57.5px;
 }
-
-
 
 .brrrand svg path{
   fill: #fff;
