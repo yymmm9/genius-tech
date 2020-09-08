@@ -1,10 +1,14 @@
+html,
+body {
+  background: var(--white);
+}
+
 main{
   padding: 0;
 }
 
 .device{
   text-align: center;
-  cursor: pointer;
 }
 
 #app{
@@ -12,7 +16,8 @@ main{
 }
 
 .cover{
-	height: 55vw;
+	height: 45vw;
+  background-position: center;
 }
 
 @media only screen and (max-width: 1220px){
@@ -25,8 +30,8 @@ main{
 	display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-	padding: 0 22px;
-	gap: 22px 22px;
+	padding: 0 14px;
+	gap: 14px 14px;
 }
 
 @media only screen and (min-width: 543px){
@@ -41,25 +46,39 @@ main{
   }
 }
 
-@media only screen and (min-width: 1020px){
-
-
+.device-container{
+  background: var(--bg);
+  border-radius: 7px;
+  padding-top: 48px;
+  display: flex;
+  cursor: pointer;
 }
-
+.device-container h3{
+  color: var(--i);
+  font-size: 14px;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
 .device{
 	width: 100%;
+  height: fit-content;
+  margin-top: auto;
 }
 
 .device img{
-	width: 66%;
+	/* width: 88%; */
+  width: 112px;
 	height: auto;
   mix-blend-mode: darken;
+}
+.plus .device img{
+  width: 129px;
 }
 
 #pricing{
 	width: 100vw;
 
-	background: #F0F0F0;
+	background: var(--bg);
 	box-shadow: 0px -4px 14px rgba(0, 0, 0, 0.17);
 	border-radius: 24px 24px 0px 0px;
 
@@ -118,27 +137,38 @@ main{
 
 #fetched-device{
 	margin-left: 24px;
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: left;
 }
 
 .services{
+  padding-top: 7px;
+}
+
+.services-container, .services{
 	display: flex;
-	overflow-x: scroll;
-	padding-top: 17px;
+	overflow-x: auto;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
 
-.services::-webkit-scrollbar {
+.services-container::-webkit-scrollbar, .services::-webkit-scrollbar {
   display: none;
+}
+
+.services{
+  padding-right: 14px;
 }
 
 .service{
 	margin: 0 0 12px 24px;
 	text-align: left;
+}
+
+.service:nth-last-child(1){
+  padding-right: 24px;
 }
 
 .placeholder{
@@ -166,7 +196,7 @@ main{
   width: 70%;
 }
 
-.service--img.placeholder{
+.placeholder{
 	background: #BFBFBF;
 }
 
@@ -174,7 +204,6 @@ main{
 	height: 11px;
 
 	margin: 5px;
-	background: #D8D8D8;
 }
 
 .service span{
@@ -185,11 +214,18 @@ main{
 	font-size: 14px;
 	max-width: 107px;
 	color: var(--i);
+  margin-bottom: 2px;
 }
 
 .service--price{
 	font-size: 12px;
 	color: var(--ii);
+  margin: 0;
+}
+
+h2.placeholder{
+  width: 124px;
+  height: 20px;
 }
 
 .service--title.placeholder{
@@ -202,4 +238,15 @@ main{
 
 .brrrand svg path{
   fill: #fff;
+}
+
+footer{
+  margin-left: 22px;
+  margin-right: 22px;
+}
+@media only screen and (min-width: 816px){
+  footer {
+      margin-left: 7vw;
+      margin-right: 7vw;
+  }
 }

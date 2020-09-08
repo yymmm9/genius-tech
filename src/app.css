@@ -2,7 +2,9 @@
   --i: #2e3133;
   --ii: rgba(46, 49, 51, 0.7);
   --iii: rgba(46, 49, 51, 0.3);
-  --bg: #f3f3f3;
+  --bg: #f7f7f7;
+  --white: #fff;
+  --radius: 16px;
   -webkit-text-size-adjust: none;
   --transition: cubic-bezier(0.42, 0, 0.21, 0.99);
 }
@@ -12,13 +14,20 @@ body {
   margin: 0;
   padding: 0;
 
-  height: 100vh;
+  /* height: 100vh; */
 
   overflow-x: hidden;
 
   background: var(--bg);
   color: var(--i);
   font-family: "Sora", sans-serif;
+}
+
+.preload.preload.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
 }
 
 .hide-scroll {
@@ -36,7 +45,6 @@ h3 {
   margin-top: 24px;
   margin-bottom: 24px;
   font-family: "Sora", sans-serif;
-  font-weight: 700;
 }
 
 h1,
@@ -47,10 +55,12 @@ h1 span {
 
 h2 {
   font-size: 28px;
+  font-weight: 700;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 span {
@@ -63,8 +73,6 @@ p {
   line-height: 1.5;
   color: var(--ii);
 }
-
-
 
 input,
 button,
@@ -186,20 +194,23 @@ ul {
   padding: 0;
 }
 
-.device {
-  cursor: pointer;
-}
-
 main {
   overflow-x: hidden;
   text-align: left;
   padding: 0 22px;
 }
 
+.tipi-container{
+  position: relative;
+  overflow-x: hidden;
+  margin: auto -24px;
+}
+
 .flex--tipi {
   display: flex;
+  position: relative;
   overflow-x: auto;
-  margin: auto -24px;
+  
 }
 
 .tipi {
@@ -212,13 +223,17 @@ main {
   justify-content: center;
 }
 
-.tipi a.neu {
+.tipi .neu {
   position: relative;
+  padding: 7px 24px;
+  margin: 12px;
 }
 
-.tipi a.neu::before {
+.tipi .neu::before {
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 
@@ -226,25 +241,30 @@ main {
   background: #cad0d5;
   mix-blend-mode: darken;
   opacity: 0;
-  transform: scalex(0.7) translate(-32px, -11px);
-  transform-origin: calc(50% - 32px) -11px;
+  transform: scalex(0.7) translateX(0%);
+  transform-origin: calc(50%);
   transition: transform 0.5s ease, opacity 0.2s ease;
+  -webkit-transition: transform 0.5s ease, opacity 0.2s ease;
+  -moz-transition: transform 0.5s ease, opacity 0.2s ease;
+  -ms-transition: transform 0.5s ease, opacity 0.2s ease;
+  -o-transition: transform 0.5s ease, opacity 0.2s ease;
+  
 }
 
-.tipi a.neu:hover::before, .tipi a.neu:active::before, .tipi a.neu:focus::before, .tipi a.neu.hover.hover_effect::before {
+.tipi .neu:hover::before, .tipi .neu:active::before, .tipi .neu:focus::before, .tipi .neu.hover.hover_effect::before {
   opacity: 1;
-  transform: scalex(1) translate(-32px, -11px);
+  transform: scalex(1) translateX(1px);
 }
 
 @media only screen and (max-width: 725px){
-  .tipi::before{
-    content: '';
-    position: fixed;
-    left: 1px;
+  .grad-mask{
+    position: absolute;
+    left: 0px;
+    top: 0;
     z-index: 5;
     width: 100vw;
     height: 107px;
-    background: linear-gradient(270deg, #F0F0F0 10%, rgba(240, 240, 240, 0) 24%);
+    background: linear-gradient(270deg, var(--bg) 10%, rgba(240, 240, 240, 0) 36%);
     pointer-events: none;
   }
 
@@ -273,6 +293,7 @@ main {
 }
 
 footer{
+  margin-top: 92px;
   position: relative;
 }
 
@@ -281,12 +302,19 @@ footer iframe {
   height: 60vw;
 }
 
-footer a{
+footer .at{
   display: block;
   text-decoration: underline;
   color: var(--i);
+  font-size: 24px;
   margin: 12px 0;
   font-weight: 700;
+  width: fit-content;
+  border-radius: 16px;
+}
+
+.copyright{
+  margin-top: 24px;
 }
 
 /* MAIN INDEX*/
@@ -329,9 +357,9 @@ a {
 }
 
 .at{
-  color: var(--ii);
+  color: var(--i);
 
-  margin: auto;
+  margin: 12px auto;
   vertical-align: middle;
   font-size: 18px;
   font-weight: 500;
@@ -380,7 +408,7 @@ a {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .neu.cover:before {
@@ -402,111 +430,6 @@ a {
   bottom: 3px;
 }
 
-#search {
-  width: 327px;
-  height: 46px;
-
-  margin: 24px auto;
-  padding-left: 24px;
-  padding-top: 7px;
-
-  background: #f0f0f0;
-  box-shadow: inset 0px 2px 4px #c8d4e2, inset 4px 2px 6px #888888,
-    inset 3px 6px 6px #d2d2d2, inset -6px -3px 5px rgba(255, 255, 255, 0.750601);
-
-  /* 	border: 1px solid black; */
-
-  border-radius: 16px;
-  border: none;
-}
-
-#search::placeholder {
-  font-size: 16px;
-  color: var(--iii);
-}
-
-#table {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  padding: 0 22px;
-  gap: 22px 22px;
-}
-
-.device {
-  width: 100%;
-}
-
-.device img {
-  width: 66%;
-  height: auto;
-}
-/* 
-h3{
-	font-size: 16px;
-} */
-
-/* #pricing {
-  width: 100vw;
-  left: 0px;
-
-  background: #f0f0f0;
-  box-shadow: 0px -4px 14px rgba(0, 0, 0, 0.17);
-  border-radius: 24px 24px 0px 0px;
-
-  position: fixed;
-  transform: translatey(100vh);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 50;
-
-  transition: transform 0.7s var(--transition);
-}
-
-#pricing.show {
-  transform: translatey(0);
-}
-
-
-
-
-
-.dragger {
-  width: 30vw;
-  max-width: 147px;
-  height: 3px;
-  margin: 10px auto 0;
-
-  background: var(--iii);
-  border-radius: 100px;
-}
-
-#fetched-device {
-  margin-left: 24px;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-align: left;
-}
-
-.services {
-  display: flex;
-  overflow-x: scroll;
-  padding-top: 17px;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.services::-webkit-scrollbar {
-  display: none;
-}
-
-.service {
-  margin: 0 0 12px 24px;
-  text-align: left;
-} */
-
 #pricing{
 	width: 100vw;
 
@@ -522,6 +445,10 @@ h3{
 	z-index: 50;
 	
 	transition: transform .7s var(--transition);
+  -webkit-transition: transform .7s var(--transition);
+  -moz-transition: transform .7s var(--transition);
+  -ms-transition: transform .7s var(--transition);
+  -o-transition: transform .7s var(--transition);
 }
 
 #pricing.show{
@@ -581,12 +508,20 @@ h3{
 	z-index: 45;
 	pointer-events: none;
 	transition: opacity .5s var(--transition);
+	-webkit-transition: opacity .5s var(--transition);
+	-moz-transition: opacity .5s var(--transition);
+	-ms-transition: opacity .5s var(--transition);
+	-o-transition: opacity .5s var(--transition);
 }
 
 #block.show{
 	opacity:.3;
 	pointer-events: all;
 	transition: opacity .5s var(--transition);
+	-webkit-transition: opacity .5s var(--transition);
+	-moz-transition: opacity .5s var(--transition);
+	-ms-transition: opacity .5s var(--transition);
+	-o-transition: opacity .5s var(--transition);
 }
 
 .dragger{
@@ -615,47 +550,6 @@ h3{
   }
 }
 
-.service--img {
-  width: 109px;
-  height: 138px;
-  background: var(--bg);
-  box-shadow: 4px 2px 7px rgba(136, 165, 191, 0.54), -4px -4px 7px #ffffff;
-  border-radius: 16px;
-}
-
-.service--img.placeholder {
-  background: #bfbfbf;
-}
-
-.service span.placeholder {
-  height: 11px;
-
-  margin: 5px;
-  background: #d8d8d8;
-}
-
-.service span {
-  display: block;
-}
-
-.service--title {
-  font-size: 16px;
-  max-width: 107px;
-  color: var(--i);
-}
-
-.service--price {
-  font-size: 12px;
-  color: var(--ii);
-}
-
-.service--title.placeholder {
-  width: 92px;
-}
-
-.service--price.placeholder {
-  width: 57.5px;
-}
 
 
 
@@ -675,11 +569,12 @@ header {
   top: 0;
   left: 0;
   z-index: 90;
+  mix-blend-mode: difference;
 }
 
 .brrrand {
   position: fixed;
-  top: 3px;
+  top: 7px;
   left: 22px;
   cursor: pointer;
   z-index: 100;
@@ -687,8 +582,9 @@ header {
 
 .brrrand svg,
 .brrrand svg path {
-  fill: var(--i);
-  height: 32px;
+  fill: var(--bg);
+  height: 27px;
+  width: auto;
 }
 
 .overlay {
@@ -726,6 +622,10 @@ header {
   font-style: normal;
 
   transition: transform 0.3s var(--transition);
+  -webkit-transition: transform 0.3s var(--transition);
+  -moz-transition: transform 0.3s var(--transition);
+  -ms-transition: transform 0.3s var(--transition);
+  -o-transition: transform 0.3s var(--transition);
 }
 
 .overlay-menu ul li a:hover {
@@ -761,7 +661,7 @@ header {
 
   header {
     background: transparent;
-    mix-blend-mode: multiply;
+    /* mix-blend-mode: multiply; */
   }
 }
 .icon {
@@ -1071,6 +971,10 @@ header {
   article{
     margin: 20vw auto;
   }
+
+  footer{
+    margin-top: 10vw;
+  }
     
   .iframe--container {
     width: 47vw;
@@ -1093,23 +997,23 @@ header {
 
 @media only screen and (min-width: 1220px){
   h1, h1 span {
-    font-size: 54px;
+    font-size: 47px;
   }
 
   h2 {
-    font-size: 42px;
+    font-size: 36px;
   }
 
   h3 {
-    font-size: 32px;
+    font-size: 24px;
   }
 
   span {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   p{
-    font-size: 24px;
+    font-size: 20px;
   }
 
   footer a{
