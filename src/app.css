@@ -201,7 +201,7 @@ main {
 }
 
 .lead-image{
-    width: 70vw;
+    width: 57vw;
   }
 
 .tipi-container{
@@ -966,11 +966,23 @@ header {
 
   .lead{
     text-align: center;
+    position: relative;
   }
 
   .lead-image{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translatex(-50%);
+
     width: 30vw;
-    max-width: 400px
+    max-width: 400px;
+  }
+
+  .lead-image-ph{
+    width: 30vw;
+    max-width: 400px;
+    paddingt-top: 35%;
   }
 
   .cover.marchio {
@@ -1034,9 +1046,9 @@ header {
   footer .pf{
     margin: 42px 0;
   }
-
+  
   article.intro{
-    margin-top: -200px;
+    margin-top: -60px;
     /* overflow: hidden; */
     overflow: visible;
   }
