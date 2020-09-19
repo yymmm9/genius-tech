@@ -11,6 +11,10 @@ main{
   text-align: center;
 }
 
+h3 p{
+  font-size: 11px;
+}
+
 #app{
 	text-align: center;
 }
@@ -211,10 +215,11 @@ main{
 }
 
 .service--title{
-	font-size: 14px;
-	max-width: 107px;
-	color: var(--i);
-  margin-bottom: 2px;
+    font-size: 14px;
+    max-width: 90px;
+    color: var(--i);
+    margin-bottom: 2px;
+    margin-right: 0;
 }
 
 .service--price{
