@@ -396,6 +396,7 @@ a {
 .cover {
   position: relative;
   background-size: cover;
+  background-repeat: no-repeat;
   opacity: 1;
 }
 
