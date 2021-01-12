@@ -41,10 +41,10 @@ $(document).ready(function() {
     // Check for the "whenToShowDialog" cookie, if not found then show the dialog and save the cookie.
     // The cookie will expire and every 2 days and the dialog will show again.
 
-    if ($.cookie('whenToShowDialog') == null) {
+    if ($.cookie('whenToShowIg') == null) {
 
         // Create expiring cookie, 2 days from now:
-        $.cookie('whenToShowDialog', 'yes', { expires: 30, path: '/' });
+        $.cookie('whenToShowIg', 'yes', { expires: 2, path: '/' });
 
         // Show dialog
        
