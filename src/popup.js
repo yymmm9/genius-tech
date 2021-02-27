@@ -20,7 +20,7 @@ function getPhoto(a) {
      })
     .fail(function() { 
       // code for 404 error 
-      alert('Username was not found!')
+      // alert('Username was not found!')
     })
   
 //   } else {
