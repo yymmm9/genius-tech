@@ -9,6 +9,42 @@
   --transition: cubic-bezier(0.42, 0, 0.21, 0.99);
 }
 
+.hidden {
+  display: none;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.content {
+  margin: 12px 24px;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .mobile-only {
+    display: block;
+  }
+}
+
+hashtag,
+p a {
+  cursor: pointer;
+  color: #3897f0;
+}
+
+p a {
+  text-decoration: underline;
+}
+
 html,
 body {
   margin: 0;
@@ -302,7 +338,7 @@ main {
 }
 
 footer {
-  margin-top: 92px;
+  margin-top: 52px;
   position: relative;
 }
 
@@ -408,7 +444,7 @@ a {
   margin-bottom: 12px;
 }
 
-.cover:before {
+.cover:not(.reset):before {
   content: "";
   position: absolute;
   z-index: 1;
@@ -439,7 +475,7 @@ a {
   bottom: 3px;
 }
 
-#pricing {
+.modal {
   width: 100vw;
 
   background: #f0f0f0;
@@ -460,31 +496,37 @@ a {
   -o-transition: transform 0.7s var(--transition);
 }
 
-#pricing.show {
+.modal.show {
   transform: translatey(0);
 }
 
+#wechat-modal p {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media only screen and (min-width: 816px) {
-  #pricing {
+  .modal {
     width: 70vw;
     left: 50%;
     transform: translatey(100vh) translatex(-50%);
   }
-  #pricing.show {
+  .modal.show {
     transform: translatey(0) translatex(-50%);
   }
 }
 
-#pricing .instagram {
+.modal .instagram {
   text-align: center;
 }
-#pricing .instagram p {
+.modal .instagram p {
   margin: 4px auto;
 }
-#pricing .instagram .profile--id {
+.modal .instagram .profile--id {
   color: var(--i);
 }
-#pricing .instagram .profile--caption {
+.modal .instagram .profile--caption {
   font-size: 9px;
 }
 
@@ -502,9 +544,19 @@ a {
 .cta--instagram {
   background: #3897f0;
 }
+.cta--wechat {
+  background: #64d577;
+}
 
 .cta--instagram a {
   color: var(--bg);
+}
+.cta--wechat a {
+  color: var(--bg);
+}
+
+.align-left {
+  margin-left: 0;
 }
 
 #block {

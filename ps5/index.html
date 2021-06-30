@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="viewport"
+      content="minimal-ui, width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
+    />
+    <meta
+      name="description"
+      content="Confronta i nostri prezzi vantaggiosi! Siamo specializzati nelle riparazioni di smartphone, tablet e computer con servizi di ritiro e consegna a domicilio!"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <title>Genius Tech | Prezzi & Servizi</title>
+
+    <link rel="canonical" href="https://geniustech.info" />
+
+    <link rel="manifest" href="../manifest.json" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-128974444-11"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-128974444-11");
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/icons/icon-72x72.png"
+      sizes="72x72"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/icons/icon-96x96.png"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/icons/icon-192x192.png"
+      sizes="192x192"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/images/icons/icon-192x192.png"
+      sizes="192x192"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/app.css" />
+    <link rel="stylesheet" href="/src/pricing.css" />
+  </head>
+
+  <body class="preload">
+    <header id="header"></header>
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+      <div id="app">
+        <div
+          class="cover reset"
+          style="background-image: url('./ps5-cover-min.jpg')"
+        ></div>
+        <form id="search" class="hidden">
+          <svg
+            width="84"
+            height="84"
+            viewBox="0 0 84 84"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="84" height="84" fill="none" />
+            <path
+              d="M65.5185 63.4147L52.5958 50.4844C55.7996 46.7329 57.4265 41.8864 57.1355 36.9613C56.8444 32.0362 54.6579 27.4151 51.0346 24.0672C47.4112 20.7193 42.6325 18.9047 37.7006 19.0039C32.7687 19.1031 28.0668 21.1084 24.581 24.5993C21.0952 28.0902 19.0962 32.7955 19.0034 37.7283C18.9105 42.6611 20.731 47.4383 24.083 51.0579C27.435 54.6776 32.0581 56.8585 36.9828 57.1433C41.9074 57.428 46.7511 55.7946 50.4978 52.5854L63.4178 65.5157C63.5531 65.664 63.7171 65.7834 63.8998 65.8666C64.0825 65.9497 64.2802 65.995 64.4809 65.9996C64.6816 66.0042 64.8811 65.9681 65.0675 65.8934C65.2538 65.8186 65.4231 65.7069 65.565 65.565C65.707 65.423 65.8187 65.2537 65.8934 65.0673C65.9681 64.8809 66.0042 64.6814 65.9996 64.4806C65.995 64.2799 65.9498 64.0822 65.8666 63.8994C65.7834 63.7167 65.6641 63.5527 65.5158 63.4174L65.5185 63.4147ZM22.0873 38.1294C22.0916 34.9544 23.0368 31.852 24.8035 29.2142C26.5702 26.5764 29.0791 24.5216 32.0132 23.3096C34.9472 22.0975 38.1746 21.7826 41.2875 22.4046C44.4004 23.0266 47.2591 24.5577 49.5022 26.8042C51.7454 29.0508 53.2723 31.912 53.89 35.0262C54.5078 38.1405 54.1886 41.368 52.9728 44.3009C51.757 47.2338 49.6992 49.7403 47.0595 51.5038C44.4197 53.2673 41.3165 54.2085 38.1421 54.2085C33.8828 54.2006 29.8005 52.5034 26.7907 49.489C23.7809 46.4747 22.0894 42.3894 22.0873 38.1294V38.1294Z"
+              fill="var(--iii)"
+            />
+          </svg>
+
+          <input
+            id="input"
+            type="text"
+            onkeyup="search()"
+            placeholder="Cerca qui.."
+          />
+        </form>
+
+        <style>
+          #search {
+            width: calc(100vw - 28px);
+            height: 46px;
+            max-width: 500px;
+            position: relative;
+
+            margin: 24px auto;
+
+            background: var(--bg);
+
+            /* 	border: 1px solid black; */
+
+            border-radius: 32px;
+            border: none;
+          }
+
+          #search::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            box-shadow: inset -6px -3px 5px rgba(255, 255, 255, 0.750601),
+              inset 3px 6px 6px #d2d2d2, inset 4px 2px 6px #888888,
+              inset 0px 2px 4px #c8d4e2;
+            border-radius: 32px;
+          }
+
+          #search input::placeholder {
+            font-size: 18px;
+            color: var(--iii);
+            overflow: visible;
+            transform: translatey(2px);
+          }
+
+          #search svg {
+            position: absolute;
+            height: 32px;
+            width: 32px;
+            color: #9e9ea7;
+            top: 8px;
+            left: 12px;
+          }
+
+          #search input {
+            font-size: 18px;
+            color: var(--ii);
+            width: calc(100vw - 58px - 18px);
+            height: 46px;
+            max-width: 500px;
+            padding: 0;
+            line-height: 1;
+            margin: 0;
+
+            padding-left: 46px;
+            outline: none;
+            border: 1px solid transparent;
+            border-radius: 32px;
+            background: transparent;
+          }
+        </style>
+
+        <div class="content text-left">
+          <h3>Play Station 5</h3>
+          <p class="text-left">
+            <hashtag>#PlayStation5</hashtag>
+            接受预定啦！包含官方一年保修，详情请参阅
+            <a href="https://www.playstation.com/it-it/legal/warranties/ps5/"
+              >playstation.com</a
+            >
+            7月4日既到货，赶快添加微信咨询吧 📦
+            <br />
+            <br />
+            🔹 PS5 White 1TB Disk <hashtag>€750</hashtag> <br />🔹 PS5 White 1TB
+            Digital <hashtag>€650</hashtag>
+            <br />
+            <br />
+            在<hashtag>库存缺乏</hashtag>的情况下预订一般7-10天内到货
+            <br />
+            <br />
+            境内邮寄 & 米兰可以自提
+          </p>
+
+          <div class="btn cta neu cta--wechat align-left" id="open-wechat">
+            <a>
+              <span>添加微信</span>
+            </a>
+          </div>
+        </div>
+
+        <ul id="table" class="hidden"></ul>
+      </div>
+      <div id="block"></div>
+
+      <div id="" class="modal">
+        <div class="dragger"></div>
+        <h2 id="fetched-device"></h2>
+        <div class="instagram">
+          <div class="instagram--profile" id="instagram--profile"></div>
+          <p class="profile--id">geniustech.info</p>
+          <p class="profile--caption">Via Antonio Gramsci, 48, Cormano</p>
+        </div>
+        <div class="btn cta neu cta--instagram">
+          <a href="https://instagram.com/geniustech.info"
+            ><span>Visita Ora</span></a
+          >
+        </div>
+      </div>
+
+      <footer id="footer"></footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <script src="/src/essentials.js"></script>
+    <script src="/src/app.js"></script>
+    <script></script>
+  </body>
+</html>
