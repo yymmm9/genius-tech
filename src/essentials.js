@@ -9,42 +9,134 @@ document.getElementById("header").innerHTML =
 // document.getElementById("overlay").innerHTML =
 //   "<nav class='overlay-menu'> <ul> <li><a href='#' onclick='yetReady();'>Lookbooks</a></li><li><a href='#' onclick='yetReady();'>Contact</a></li><li><a href='./custom-made.html'>Custom</a></li></ul> </nav>";
 
-document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() { 
-  // wechat users
-  $(document).ready(function() {
 
-    // Make sure dialog is initially hidden:
-   //  $('#dialog').dialog({autoOpen: false});
- 
-   //  $('#wechat-modal').dialog({autoOpen: false});
- 
-     // Check for the "whenToShowDialog" cookie, if not found then show the dialog and save the cookie.
-     // The cookie will expire and every 2 days and the dialog will show again.
- 
-     if ($.cookie('whenToShowIg') == null) {
- 
-         // Create expiring cookie, 2 days from now:
-         $.cookie('whenToShowIg', 'yes', { expires: 2, path: '/' });
- 
-         // Show dialog
+
+
+
+// when your webapp is loaded, before adding listener for weixing js bridge, check if it's already initialized:
+var timeoutID = 0;
+if( typeof WeixinJSBridge !== "undefined" )
+{
+    // WeChat JS bridge already initialized. Wonderful.
+
+    $(document).ready(function() {
+
+      // Make sure dialog is initially hidden:
+     //  $('#dialog').dialog({autoOpen: false});
+   
+     //  $('#wechat-modal').dialog({autoOpen: false});
+   
+       // Check for the "whenToShowDialog" cookie, if not found then show the dialog and save the cookie.
+       // The cookie will expire and every 2 days and the dialog will show again.
+   
+       if ($.cookie('whenToShowIg') == null) {
+   
+           // Create expiring cookie, 2 days from now:
+           $.cookie('whenToShowIg', 'yes', { expires: 2, path: '/' });
+   
+           // Show dialog
+          
+           document.getElementById('pricing').classList.add("show");
+           document.getElementById('block').classList.add("show");     
+       }
+   
+       if ($.cookie('whenToShowWechat') == null) {
+   
+           // Create expiring cookie, 2 days from now:
+           $.cookie('whenToShowWechat', 'yes', { expires: 1, path: '/' });
+   
+           // Show dialog
+          
+           document.getElementById('wechat-modal').classList.add("show");
+           document.getElementById('block').classList.add("show");     
+       }
+   
+   });
+
+   document.querySelector("#block, .dragger").addEventListener("click", (event) => {
+    document.querySelector('.modal').classList.remove("show");
+    document.getElementById('block').classList.remove("show");
+  });
+  
+  document.querySelector("#open-wechat").addEventListener("click", (event) => {
+    document.querySelector('#wechat-modal').classList.add("show");
+    document.getElementById('block').classList.add("show");
+  });
+}
+else
+{
+    // setup a time out of let's say 5 seconds, to wait for the bridge:
+    timeoutID = window.setTimeout(WeChatBridgeTimeout,5000);
+    // now add listener for the bridge:
+    document.addEventListener('WeixinJSBridgeReady', WeChatBridgeReady, false);
+}
+
+// Now in bridge time out:
+function WeChatBridgeTimeout()
+{
+     // Just to be sure that bridge was not initialized just before the line we added the listener (since it's a separate process than JS), let's check for it again:
+      if( typeof WeixinJSBridge !== "undefined" )
+      {
+           // WeChat JS bridge already initialized. Wonderful.
+           $(document).ready(function() {
+
+            // Make sure dialog is initially hidden:
+           //  $('#dialog').dialog({autoOpen: false});
+         
+           //  $('#wechat-modal').dialog({autoOpen: false});
+         
+             // Check for the "whenToShowDialog" cookie, if not found then show the dialog and save the cookie.
+             // The cookie will expire and every 2 days and the dialog will show again.
+         
+             if ($.cookie('whenToShowIg') == null) {
+         
+                 // Create expiring cookie, 2 days from now:
+                 $.cookie('whenToShowIg', 'yes', { expires: 2, path: '/' });
+         
+                 // Show dialog
+                
+                 document.getElementById('pricing').classList.add("show");
+                 document.getElementById('block').classList.add("show");     
+             }
+         
+             if ($.cookie('whenToShowWechat') == null) {
+         
+                 // Create expiring cookie, 2 days from now:
+                 $.cookie('whenToShowWechat', 'yes', { expires: 1, path: '/' });
+         
+                 // Show dialog
+                
+                 document.getElementById('wechat-modal').classList.add("show");
+                 document.getElementById('block').classList.add("show");     
+             }
+         
+         });
+
+         document.querySelector("#block, .dragger").addEventListener("click", (event) => {
+          document.querySelector('.modal').classList.remove("show");
+          document.getElementById('block').classList.remove("show");
+        });
         
-         document.getElementById('pricing').classList.add("show");
-         document.getElementById('block').classList.add("show");     
-     }
- 
-     if ($.cookie('whenToShowWechat') == null) {
- 
-         // Create expiring cookie, 2 days from now:
-         $.cookie('whenToShowWechat', 'yes', { expires: 1, path: '/' });
- 
-         // Show dialog
-        
-         document.getElementById('wechat-modal').classList.add("show");
-         document.getElementById('block').classList.add("show");     
-     }
- 
- });
-}, false);
+        document.querySelector("#open-wechat").addEventListener("click", (event) => {
+          document.querySelector('#wechat-modal').classList.add("show");
+          document.getElementById('block').classList.add("show");
+        });
+      }
+      else
+      {
+           // Nope... if it's not initialized by now, we're not in WeChat.
+      }
+}
+
+// And in event handled:
+function WeChatBridgeReady()
+{
+     // remove listener timeout
+     window.clearTimeout(timeoutID);
+     // WeChat JS bridge initialized.
+}
+
+
 
 document.getElementById("footer").innerHTML =
 `<h1>Parlaci dei tuoi </br><span class='grad'>problemi</span>oppure </br><span class='grad'>vieni a trovarci</span></h1> <div class='iframe--container'> <div class='neu--inset' style='background: rgba(240, 240, 240, 0.1);'></div><iframe src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11178.2743732108!2d9.1654914!3d45.5388863!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x381beb763fcb94fc!2sGENIUS%20TECH%20CENTRO%20RIPARAZIONE%20E%20ASSISTENZA%20CELLULARE!5e0!3m2!1szh-CN!2sit!4v1594674434253!5m2!1sit-IT!2sit' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false' tabindex='0'></iframe> </div><p class='pf'>Siamo aperti da Lunedí a Sabato </br>alle 09.30~13.00 e 14.30~19.00 </br><i>Domenica solo su appuntamento</i></p><a class='at' data-ccursor href='tel:393318077062'>+39 331 807 7062 </a> <a class='at' data-ccursor href='mailto:info@geniustech.info'>info@geniustech.info</a> <p class='copyright'>©2020 Genius Tech <br class="mobile-only"/>developed by <a class='co-credit' style="font-size: inherit;" href='https://minority.studio/?utm_source=referral&amp;utm_medium=web&amp;utm_campaign=msc'>Minority Studio</a></p>`;
@@ -95,9 +187,4 @@ $(document).ready(function() {
 document.querySelector("#block, .dragger").addEventListener("click", (event) => {
 	document.querySelector('.modal').classList.remove("show");
 	document.getElementById('block').classList.remove("show");
-});
-
-document.querySelector("#open-wechat").addEventListener("click", (event) => {
-	document.querySelector('#wechat-modal').classList.add("show");
-	document.getElementById('block').classList.add("show");
 });
