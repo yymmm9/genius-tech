@@ -18,7 +18,6 @@ var timeoutID = 0;
 if( typeof WeixinJSBridge !== "undefined" )
 {
     // WeChat JS bridge already initialized. Wonderful.
-
     $(document).ready(function() {
 
       // Make sure dialog is initially hidden:
@@ -28,17 +27,6 @@ if( typeof WeixinJSBridge !== "undefined" )
    
        // Check for the "whenToShowDialog" cookie, if not found then show the dialog and save the cookie.
        // The cookie will expire and every 2 days and the dialog will show again.
-   
-       if ($.cookie('whenToShowIg') == null) {
-   
-           // Create expiring cookie, 2 days from now:
-           $.cookie('whenToShowIg', 'yes', { expires: 2, path: '/' });
-   
-           // Show dialog
-          
-           document.getElementById('pricing').classList.add("show");
-           document.getElementById('block').classList.add("show");     
-       }
    
        if ($.cookie('whenToShowWechat') == null) {
    
@@ -52,16 +40,7 @@ if( typeof WeixinJSBridge !== "undefined" )
        }
    
    });
-
-   document.querySelector("#block, .dragger").addEventListener("click", (event) => {
-    document.querySelector('.modal').classList.remove("show");
-    document.getElementById('block').classList.remove("show");
-  });
   
-  document.querySelector("#open-wechat").addEventListener("click", (event) => {
-    document.querySelector('#wechat-modal').classList.add("show");
-    document.getElementById('block').classList.add("show");
-  });
 }
 else
 {
@@ -87,18 +66,7 @@ function WeChatBridgeTimeout()
          
              // Check for the "whenToShowDialog" cookie, if not found then show the dialog and save the cookie.
              // The cookie will expire and every 2 days and the dialog will show again.
-         
-             if ($.cookie('whenToShowIg') == null) {
-         
-                 // Create expiring cookie, 2 days from now:
-                 $.cookie('whenToShowIg', 'yes', { expires: 2, path: '/' });
-         
-                 // Show dialog
-                
-                 document.getElementById('pricing').classList.add("show");
-                 document.getElementById('block').classList.add("show");     
-             }
-         
+        
              if ($.cookie('whenToShowWechat') == null) {
          
                  // Create expiring cookie, 2 days from now:
@@ -112,15 +80,6 @@ function WeChatBridgeTimeout()
          
          });
 
-         document.querySelector("#block, .dragger").addEventListener("click", (event) => {
-          document.querySelector('.modal').classList.remove("show");
-          document.getElementById('block').classList.remove("show");
-        });
-        
-        document.querySelector("#open-wechat").addEventListener("click", (event) => {
-          document.querySelector('#wechat-modal').classList.add("show");
-          document.getElementById('block').classList.add("show");
-        });
       }
       else
       {
@@ -187,4 +146,6 @@ $(document).ready(function() {
 document.querySelector("#block, .dragger").addEventListener("click", (event) => {
 	document.querySelector('.modal').classList.remove("show");
 	document.getElementById('block').classList.remove("show");
+  document.querySelector('#wechat-modal').classList.remove("show");
+  document.querySelector('#pricing').classList.remove("show");
 });
