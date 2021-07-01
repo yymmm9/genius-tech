@@ -141,6 +141,17 @@ $(document).ready(function() {
 	      document.getElementById('block').classList.add("show");     
     }
 
+  //   if ($.cookie('whenToShowWechat') == null) {
+         
+  //     // Create expiring cookie, 2 days from now:
+  //     $.cookie('whenToShowWechat', 'yes', { expires: 1, path: '/' });
+
+  //     // Show dialog
+     
+  //     document.getElementById('wechat-modal').classList.add("show");
+  //     document.getElementById('block').classList.add("show");     
+  // }
+
 });
 
 document.querySelector("#block, .dragger").addEventListener("click", (event) => {
@@ -149,3 +160,8 @@ document.querySelector("#block, .dragger").addEventListener("click", (event) => 
   document.querySelector('#wechat-modal').classList.remove("show");
   document.querySelector('#pricing').classList.remove("show");
 });
+document.querySelector("#open-wechat").addEventListener("click", (event) => {
+	document.getElementById('wechat-modal').classList.add("show");
+                 document.getElementById('block').classList.add("show");   
+});
+
